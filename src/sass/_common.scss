@@ -1,1 +1,73 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  background-color: rgb(247, 252, 255);
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  background: radial-gradient(
+    circle,
+    rgb(161, 161, 161) 0%,
+    rgb(92, 92, 92) 45%,
+    rgb(27, 27, 27) 100%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(178, 242, 255, 1) 0%,
+    rgba(0, 212, 255, 1) 45%,
+    rgba(0, 137, 166, 1) 100%
+  );
+}
+
+.search-form input {
+  display: block;
+  border-radius: 5px;
+  border-color: rgb(255, 255, 255);
+  border: 1px solid rgb(235, 250, 253);
+}
+
+.search-form button {
+  border-radius: 5px;
+  border-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  width: 80px;
+  border: 1px solid white;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(235, 250, 253);
+    border: 1px solid rgb(235, 250, 253);
+  }
+}
+
+.load-more {
+  display: flex;
+  align-items: center;
+
+  border-radius: 5px;
+  height: 40px;
+  line-height: 50px;
+  position: relative;
+  border: 1px solid white;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(235, 250, 253);
+    border: 1px solid rgb(235, 250, 253);
+  }
+}
+
+.search-img {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
