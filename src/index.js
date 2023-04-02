@@ -1,8 +1,6 @@
 import { fetchImg } from './JS/fetch-Img-from-form';
 import Notiflix from 'notiflix';
 
-import InfiniteScroll from 'infinite-scroll';
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -94,8 +92,6 @@ function loadMoreImg(event) {
         return;
       }
 
-      // SimpleLightbox.refresh();
-
       renderMarkup(photos);
       lightbox.refresh();
       scrolOnImgLoading();
@@ -106,3 +102,16 @@ function loadMoreImg(event) {
       Notiflix.Notify.warning('Щось пішло не так :(');
     });
 }
+
+/////////////////=============================////////////////
+//  Infinite Scrolling
+
+// function isEndOfPage() {
+//   return window.innerHeight + window.scrollY >= document.body.offsetHeight;
+// }
+
+// window.addEventListener('scroll', async () => {
+//   if (isEndOfPage()) {
+//     await loadMoreImg();
+//   }
+// });
