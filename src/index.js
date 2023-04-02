@@ -6,6 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { scrolOnImgLoading } from './JS/scrolOnImgLoading';
 import { renderMarkup } from './JS/renger-card-markup';
+
 export let page = 1;
 
 const searchForm = document.querySelector('.search-form');
