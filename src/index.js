@@ -1,48 +1,59 @@
 import { fetchImg } from './JS/fetch-Img-from-form';
-// import axios from 'axios';
+import Notiflix from 'notiflix';
+
+import { renderMarkup } from './JS/renger-card-markup';
+export let page = 1;
 
 const searchForm = document.querySelector('.search-form');
 const inputForm = document.querySelector('.input-form');
+const loadMorebtnEl = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
 
-// console.log(img);
-
 searchForm.addEventListener('submit', searchFoto);
+loadMorebtnEl.addEventListener('click', loadMoreImg);
+
+let sumOfLoadImg = 0;
 
 function searchFoto(event) {
   event.preventDefault();
-
+  gallery.innerHTML = '';
+  page = 1;
   formSubmitValue = inputForm.value.trim();
 
   fetchImg(formSubmitValue).then(imgArr => {
+    if (imgArr.data.total === 0) {
+      Notiflix.Notify.warning(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+      return;
+    }
+    sumOfLoadImg = 0;
+    sumOfLoadImg += imgArr.data.hits.length;
+
     const photos = imgArr.data.hits;
-    console.log(photos);
-    return renderMarkup(photos);
+
+    renderMarkup(photos);
+    loadMorebtnEl.classList.remove('is-hiden');
   });
-  // console.log(photos);
 }
 
-function renderMarkup(photos) {
-  const markup = photos.map(img => {
-    return `
-        <div class="photo-card">
-  <img src="${img.webformatURL}" alt="${img.tags}" loading="lazy" />
-  <div class="info">
-    <p class="info-item">
-      <b>Likes: ${img.likes}</b>
-    </p>
-    <p class="info-item">
-      <b>Views: ${img.views}</b>
-    </p>
-    <p class="info-item">
-      <b>Comments: ${img.comments}</b>
-    </p>
-    <p class="info-item">
-      <b>Downloads: ${img.downloads}</b>
-    </p>
-  </div>
-</div>`;
-  });
+function loadMoreImg(event) {
+  loadMorebtnEl.classList.add('is-hiden');
 
-  gallery.innerHTML = markup;
+  page += 1;
+
+  fetchImg(formSubmitValue).then(imgArr => {
+    const photos = imgArr.data.hits;
+    sumOfLoadImg += imgArr.data.hits.length;
+
+    if (sumOfLoadImg === imgArr.data.totalHits) {
+      Notiflix.Notify.warning(
+        "We're sorry, but you've reached the end of search results."
+      );
+      loadMorebtnEl.classList.add('is-hiden');
+    }
+
+    renderMarkup(photos);
+    loadMorebtnEl.classList.remove('is-hiden');
+  });
 }
