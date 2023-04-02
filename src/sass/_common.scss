@@ -54,13 +54,14 @@ body {
   height: 40px;
   line-height: 50px;
   position: relative;
+  background-color: rgb(74, 211, 238);
   border: 1px solid white;
 
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(235, 250, 253);
-    border: 1px solid rgb(235, 250, 253);
+    background-color: rgb(208, 247, 255);
+    border: 1px solid rgb(208, 247, 255);
   }
 }
 
@@ -85,8 +86,43 @@ body {
   height: 400px;
 }
 
-.photo-card > img {
-  width: 240px;
+.photo-card {
+  img {
+    display: block;
+    width: 100%;
+    padding: 15px 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.info {
+  padding-left: 15px;
+}
+
+.info-item {
+  font-weight: 500;
+  color: black;
+}
+.img-info {
+  font-weight: 400;
+  color: rgb(95, 95, 95);
+}
+.big-img-link {
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  color: rgb(24, 24, 24);
+  background-color: rgb(239, 248, 250);
+  scale: 1;
+
+  box-shadow: 12px 14px 23px -8px rgba(0, 57, 61, 0.36);
+  &:hover,
+  &:focus {
+    transform: scale(1.01);
+    background-color: rgb(217, 240, 243);
+  }
 }
 
 .is-hiden {
