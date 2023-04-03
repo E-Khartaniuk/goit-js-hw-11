@@ -1,7 +1,7 @@
 const gallery = document.querySelector('.gallery');
 
 export function renderMarkup(photos) {
-  markup = photos
+  let markup = photos
     .map(img => {
       return `<a class="big-img-link" href="${img.largeImageURL}">
         <div class="photo-card">
