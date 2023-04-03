@@ -7,7 +7,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { scrolOnImgLoading } from './JS/scrolOnImgLoading';
 import { renderMarkup } from './JS/renger-card-markup';
 
-export let page = 1;
+let sumOfLoadImg = 0;
+let page = 1;
+let formSubmitValue = '';
 
 const searchForm = document.querySelector('.search-form');
 const inputForm = document.querySelector('.input-form');
@@ -23,13 +25,11 @@ var lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
 });
 
-let sumOfLoadImg = 0;
-
 function searchFoto(event) {
   event.preventDefault();
 
   page = 1;
-  let formSubmitValue = inputForm.value.trim();
+  formSubmitValue = inputForm.value.trim();
 
   if (formSubmitValue === '') {
     loadMorebtnEl.classList.add('is-hiden');
@@ -37,7 +37,7 @@ function searchFoto(event) {
     return;
   }
 
-  fetchImg(formSubmitValue)
+  fetchImg(formSubmitValue, page)
     .then(imgArr => {
       if (imgArr.data.total === 0) {
         Notiflix.Notify.warning(
@@ -76,7 +76,7 @@ function loadMoreImg(event) {
   loadMorebtnEl.classList.add('is-hiden');
   page += 1;
 
-  fetchImg(formSubmitValue)
+  fetchImg(formSubmitValue, page)
     .then(imgArr => {
       const photos = imgArr.data.hits;
       sumOfLoadImg += imgArr.data.hits.length;
