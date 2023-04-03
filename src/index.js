@@ -29,7 +29,7 @@ function searchFoto(event) {
   event.preventDefault();
 
   page = 1;
-  formSubmitValue = inputForm.value.trim();
+  let formSubmitValue = inputForm.value.trim();
 
   if (formSubmitValue === '') {
     loadMorebtnEl.classList.add('is-hiden');
