@@ -9,6 +9,6 @@ export async function fetchImg(formSubmitValue, page) {
       `${BASE_URL}/?${API}&q=${formSubmitValue}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=40`
     );
   } catch (error) {
-    return Notiflix.Notify.warning('Щось пішло не так :(');
+    return error;
   }
 }

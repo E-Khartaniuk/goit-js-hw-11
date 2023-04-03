@@ -52,6 +52,7 @@ function searchFoto(event) {
       gallery.innerHTML = '';
 
       renderMarkup(photos);
+      console.log(photos);
       lightbox.refresh();
       Notiflix.Notify.success(
         `Hooray! We found ${imgArr.data.totalHits} images`
@@ -68,11 +69,11 @@ function searchFoto(event) {
       loadMorebtnEl.classList.remove('is-hiden');
     })
     .catch(() => {
-      Notiflix.Notify.warning('Щось пішло не так :(');
+      console.log(error);
     });
 }
 
-function loadMoreImg(event) {
+function loadMoreImg() {
   loadMorebtnEl.classList.add('is-hiden');
   page += 1;
 
