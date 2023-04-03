@@ -68,7 +68,7 @@ function searchFoto(event) {
 
       loadMorebtnEl.classList.remove('is-hiden');
     })
-    .catch(() => {
+    .catch(error => {
       console.log(error);
     });
 }
